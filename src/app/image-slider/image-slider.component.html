@@ -1,0 +1,37 @@
+<div class="image-slider-container">
+  <div
+    class="nav-button left-button"
+    [class.hide]="hideLeft"
+    (click)="navLeft()"
+  >
+    <i class="fa fa-chevron-left"></i>
+  </div>
+  <div
+    class="nav-button right-button"
+    [class.hide]="hideRight"
+    (click)="navRight()"
+  >
+    <i class="fa fa-chevron-right"></i>
+  </div>
+  <div
+    class="image-slide-list"
+    #imageSlideList
+    (scroll)="imageContainerScrolled($event)"
+  >
+    <div
+      class="image-slide"
+      *ngFor="let image of imagesList; let i = index"
+      #imageSlide
+    >
+      <div class="hoverable-container" (mouseover)="mouseOver(i)">
+        <div class="image-div">
+          <img src="https://picsum.photos/300/200?{{ i }}" />
+          <div class="image-label">{{ i + 1 }}</div>
+        </div>
+        <div class="hover-container">
+          <img src="https://picsum.photos/300/400?{{ i }}" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

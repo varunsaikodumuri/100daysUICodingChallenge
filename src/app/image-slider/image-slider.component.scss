@@ -1,0 +1,121 @@
+.image-slider-container {
+  margin-top: 50px;
+  width: 100%;
+  position: relative;
+  //   overflow-y: hidden;
+}
+
+.image-slide-list {
+  overflow-y: auto;
+  overflow-x: scroll;
+  width: 100%;
+  white-space: nowrap;
+  margin-bottom: -18px;
+  //   position: relative;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.image-slide {
+  display: inline-block;
+  width: 320px;
+  padding-right: 20px;
+  //   position: relative;
+  vertical-align: top;
+  overflow: visible;
+
+  .hoverable-container {
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+    // position: relative;
+    visibility: visible;
+    overflow: visible;
+
+    .image-div {
+      position: relative;
+    }
+  }
+
+  .hover-container {
+    opacity: 0;
+    position: absolute;
+    content: "";
+    height: 0;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    transition: opacity 0.3s ease-in;
+    overflow: auto;
+    border-radius: 5px;
+    box-shadow: 0 0 9px rgba(0, 0, 0, 0.7);
+  }
+  .hoverable-container:hover > .hover-container {
+    transform: scale(1.1);
+    opacity: 1;
+    height: 400px;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+  }
+
+  .image-label {
+    position: absolute;
+    overflow: hidden;
+    padding: 0;
+    white-space: normal;
+    color: white;
+    background: transparent;
+    bottom: 10px;
+    left: 10px;
+    z-index: 5;
+    text-shadow: 1px -1px 0 rgba(0, 0, 0, 0.35);
+  }
+}
+
+.image-slide:first-child {
+  margin-left: 50px;
+}
+
+.image-slide:last-child {
+  margin-right: 50px;
+}
+
+.nav-button {
+  left: 0;
+  height: 100%;
+  width: 50px;
+  color: white;
+  border: 0;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  outline: 0 none;
+  opacity: 0.7;
+  height: 200px;
+  border-radius: 0;
+  background-color: rgba(15, 23, 30, 0.5);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease-in;
+}
+
+.nav-button.hide {
+  opacity: 0;
+}
+
+.nav-button:not(.hide):hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.right-button {
+  left: unset;
+  right: 0;
+}

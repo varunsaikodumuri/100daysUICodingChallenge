@@ -1,0 +1,25 @@
+<div class="grid">
+  <div class="winner-text">
+      <span *ngIf="isGameOver && isWinner" class="winner">Congratulations! You are a winner!</span>
+      <span *ngIf="isGameOver && !isWinner" class="loser">Try again!</span>
+    </div>
+  <div
+    *ngFor="let element of gridArray; let i = index"
+    [id]="i"
+    [class.checked]="countArray[i].isChecked"
+    (click)="click(i)"
+    (contextmenu)="onRightClick($event, i)"
+  >
+    <span *ngIf="shuffledArray[i] === 'valid' && countArray[i].isChecked && countArray[i].count !== 0">{{
+      countArray[i].count
+    }}</span>
+    <span *ngIf="!isGameOver && countArray[i].isFlag" class="flag-icon"
+      ><i class="fa fa-flag"></i
+    ></span>
+    <span *ngIf="isGameOver && shuffledArray[i] === 'bomb'" class="bomb-icon"
+      ><i class="fa fa-bomb"></i
+    ></span>
+  </div>
+
+  <div class="new-game-div"><button (click)="newGame()">New Game</button></div>
+</div>

@@ -1,0 +1,97 @@
+.spacer {
+  flex: 1;
+}
+
+.toolbar {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: #1976d2;
+  color: white;
+  font-weight: 600;
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #ff0000;
+  }
+}
+
+.toolbar #twitter-logo {
+  height: 40px;
+  margin: 0 16px;
+}
+
+.toolbar #twitter-logo:hover {
+  opacity: 0.8;
+}
+
+.profile-img {
+  margin: 0 16px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-img img {
+  width: 100%;
+}
+
+.side-nav-toggle {
+  margin-left: 16px;
+  cursor: pointer;
+}
+
+.side-nav-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 25%;
+  height: calc(100% - 60px);
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.95);
+  padding-top: 60px;
+  overflow: auto;
+}
+
+@media only screen and (max-width: 767px) {
+  .side-nav-menu {
+    width: 60%;
+  }
+}
+
+.side-nav-menu.open {
+  display: block;
+}
+
+.side-nav-menu-list {
+  padding: 0;
+}
+
+.side-nav-menu-item {
+  list-style-type: none;
+  height: 50px;
+  font-weight: normal;
+  color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.side-nav-menu-item:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  font-size: 1.2rem;
+}
+
+.side-nav-menu-item a {
+  height: 100%;
+  width: auto;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  text-decoration: none;
+  color: inherit;
+}

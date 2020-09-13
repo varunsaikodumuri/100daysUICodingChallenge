@@ -1,0 +1,83 @@
+.grid {
+    height: 400px;
+    width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    position: absolute;
+}
+
+.grid div {
+    height: 40px;
+    width: 40px;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    cursor: pointer;
+    box-sizing: border-box;
+    border-top: 3px solid white;
+    border-left: 3px solid white;
+    border-right: 3px solid black;
+    border-bottom: 3px solid black;
+    background-color: grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid div.checked {
+    background-color: lightgray !important;
+}
+
+.bomb-icon {
+    color: #aa0000;
+}
+
+.flag-icon {
+    color: orange;
+}
+
+.winner-text {
+    text-align: center;
+    background-color: white !important;
+    flex-basis: 100%;
+    border: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+
+    .winner {
+        color: green;
+    }
+
+    .loser {
+        color: red;
+    }
+}
+
+.new-game-div {
+    flex-basis: 100%;
+    border: 0 !important;
+    background-color: white !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button {
+        cursor: pointer;
+        background-color: #1976d2;
+        color: white;
+        padding: 5px 20px;
+        text-align: center;
+        border-radius: 10px;
+        transition: all 0.2s ease-in;
+    }
+    button:hover {
+        transform: scale(1.1);
+        background-color: #15599d;
+    }
+}

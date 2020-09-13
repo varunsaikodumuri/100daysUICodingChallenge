@@ -1,0 +1,29 @@
+<div class="image-container">
+  <div class="image-column" *ngFor="let img of imagesList;let i=index">
+    <img
+      class="image"
+      src="{{ 'https://picsum.photos/' + img.props[0] + '/' + img.props[1] + '?' + img.id}}"
+      alt="Gallery Image"
+      (click)="openImage(img)"
+    />
+  </div>
+</div>
+<ng-container *ngIf="selectedImageName">
+  <div class="img-modal" [class.open]="selectedImageName ? true : false" >
+    <div class="img-modal-body">
+        <img
+          class="image-popup"
+          src="{{
+            'assets/images/day1/Image (' + selectedImageName.id + ')-min.JPG'
+          }}"
+          src="{{ 'https://picsum.photos/' + selectedImageName.props[0] + '/' + selectedImageName.props[1] + '?' + selectedImageName.id}}"
+          alt="Gallery Image"
+        />
+        <span class="btn btn-left" (click)="openLeft()"><i class="fa fa-chevron-left"></i></span>
+        <span class="btn btn-right" (click)="openRight()"><i class="fa fa-chevron-right"></i></span>
+        <span class="btn btn-close-modal" (click)="closeImageModal()">
+          <i class="fa fa-times"></i>
+        </span>
+    </div>
+  </div>
+</ng-container>
