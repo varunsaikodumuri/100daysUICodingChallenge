@@ -8,6 +8,7 @@ import { ImageCarouselComponent } from './image-carousel/image-carousel.componen
 import { FlexboxLayoutComponent } from './flexbox-layout/flexbox-layout.component';
 import { GridLayoutComponent } from './grid-layout/grid-layout.component';
 import { ImageSpanComponent } from './image-span/image-span.component';
+import { ButtonAccordionComponent } from './button-accordion/button-accordion.component';
 
 
 const routes: Routes = [{
@@ -22,7 +23,8 @@ const routes: Routes = [{
 { path: 'day7', component: ImageCarouselComponent },
 { path: 'day8', component: FlexboxLayoutComponent },
 { path: 'day9', component: GridLayoutComponent },
-{ path: 'day10', component: ImageSpanComponent }];
+{ path: 'day10', component: ImageSpanComponent },
+{ path: 'day11', component: ButtonAccordionComponent }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

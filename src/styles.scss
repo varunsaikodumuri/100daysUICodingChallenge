@@ -11,14 +11,6 @@ $fa-font-path: "~font-awesome/fonts";
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 8px 0;
-}
 
 html {
   line-height: 1.15;
@@ -32,4 +24,13 @@ body {
 }
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+@font-face {
+  font-family: "Genericons";
+  src: url(./assets/fonts/genericons-regular-webfont.woff) format("woff"),
+    url(./assets/fonts/genericons-regular-webfont.eot) format("truetype");
 }

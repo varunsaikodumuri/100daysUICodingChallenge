@@ -12,6 +12,7 @@ import { ImageCarouselComponent } from './image-carousel/image-carousel.componen
 import { FlexboxLayoutComponent } from './flexbox-layout/flexbox-layout.component';
 import { GridLayoutComponent } from './grid-layout/grid-layout.component';
 import { ImageSpanComponent } from './image-span/image-span.component';
+import { ButtonAccordionComponent } from './button-accordion/button-accordion.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ImageSpanComponent } from './image-span/image-span.component';
     ImageCarouselComponent,
     FlexboxLayoutComponent,
     GridLayoutComponent,
-    ImageSpanComponent
+    ImageSpanComponent,
+    ButtonAccordionComponent
   ],
   imports: [
     BrowserModule,

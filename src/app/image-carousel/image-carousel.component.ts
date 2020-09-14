@@ -13,7 +13,7 @@ export class ImageCarouselComponent implements OnInit {
 
   ngOnInit() {
     this.carouselImages = Array(5).fill(null);
-
+    this.setNewInterval();
 
   }
 
