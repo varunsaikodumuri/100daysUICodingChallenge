@@ -9,6 +9,7 @@ import { FlexboxLayoutComponent } from './flexbox-layout/flexbox-layout.componen
 import { GridLayoutComponent } from './grid-layout/grid-layout.component';
 import { ImageSpanComponent } from './image-span/image-span.component';
 import { ButtonAccordionComponent } from './button-accordion/button-accordion.component';
+import { SplitScreenComponent } from './split-screen/split-screen.component';
 
 
 const routes: Routes = [{
@@ -24,7 +25,8 @@ const routes: Routes = [{
 { path: 'day8', component: FlexboxLayoutComponent },
 { path: 'day9', component: GridLayoutComponent },
 { path: 'day10', component: ImageSpanComponent },
-{ path: 'day11', component: ButtonAccordionComponent }];
+{ path: 'day11', component: ButtonAccordionComponent },
+{ path: 'day12', component: SplitScreenComponent }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

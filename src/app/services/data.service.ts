@@ -15,7 +15,8 @@ export class DataService {
       { name: 'Day 8 (Flex Box)', path: '/day8', showHeader: true },
       { name: 'Day 9 (Grid)', path: '/day9', showHeader: true },
       { name: 'Day 10 (Image Span)', path: '/day10', showHeader: true },
-      { name: 'Day 11 (Social Media Accordion)', path: '/day11', showHeader: true }
+      { name: 'Day 11 (Social Media Accordion)', path: '/day11', showHeader: true },
+      { name: 'Day 12 (Split Screen)', path: '/day12', showHeader: true }
     ]
   }
 

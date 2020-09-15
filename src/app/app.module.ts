@@ -13,6 +13,7 @@ import { FlexboxLayoutComponent } from './flexbox-layout/flexbox-layout.componen
 import { GridLayoutComponent } from './grid-layout/grid-layout.component';
 import { ImageSpanComponent } from './image-span/image-span.component';
 import { ButtonAccordionComponent } from './button-accordion/button-accordion.component';
+import { SplitScreenComponent } from './split-screen/split-screen.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ButtonAccordionComponent } from './button-accordion/button-accordion.co
     FlexboxLayoutComponent,
     GridLayoutComponent,
     ImageSpanComponent,
-    ButtonAccordionComponent
+    ButtonAccordionComponent,
+    SplitScreenComponent
   ],
   imports: [
     BrowserModule,
