@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-image-gallery',
@@ -9,6 +9,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 export class ImageGalleryComponent implements OnInit {
   imagesList = [];
   selectedImageName = null;
+  @ViewChild('imgModal', { static: false }) imgModal: ElementRef;
+
   constructor() { }
 
   ngOnInit() {
@@ -18,6 +20,13 @@ export class ImageGalleryComponent implements OnInit {
       return img;
     }));
 
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(e) {
+    if(this.selectedImageName && e.target == this.imgModal.nativeElement) {
+      this.closeImageModal();
+    }
   }
 
   openImage(img) {

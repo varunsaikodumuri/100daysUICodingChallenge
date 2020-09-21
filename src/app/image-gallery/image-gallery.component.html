@@ -9,7 +9,7 @@
   </div>
 </div>
 <ng-container *ngIf="selectedImageName">
-  <div class="img-modal" [class.open]="selectedImageName ? true : false" >
+  <div class="img-modal" #imgModal [class.open]="selectedImageName ? true : false" >
     <div class="img-modal-body">
         <img
           class="image-popup"

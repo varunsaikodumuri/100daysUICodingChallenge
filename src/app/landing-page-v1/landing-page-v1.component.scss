@@ -1,0 +1,190 @@
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  font-family: "Roboto", sans-serif;
+  width: 85%;
+  margin: 0 auto;
+  max-width: 65em; // 65*16 = 1040px
+}
+
+.spacing > * + * {
+  margin-top: var(--spacer, 2rem);
+}
+
+.split {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: center;
+
+  & > * {
+    flex-basis: 30%;
+    min-width: 15em;
+  }
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.5em 1.25em;
+  background-color: var(--clr-accent, blue);
+  color: var(--clr-text, #fff);
+  border-radius: 0.25em;
+  transition: transform 250ms ease-in-out, opacity 250ms linear;
+}
+
+.btn:hover,
+.btn:focus {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+.primary-title {
+  font-size: 4rem;
+  font-size: clamp(3rem, calc(5vw + 1rem), 4.5rem);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.section-title {
+  text-align: center;
+  font-size: clamp(2.5rem, calc(5vw + 1rem), 4rem);
+  line-height: 1.1;
+  color: #17353d;
+  margin-bottom: 5rem;
+}
+
+section {
+  padding: 7em 0;
+}
+
+.hero {
+  text-align: center;
+  padding: 15em 0;
+  color: white;
+  background: #222;
+  @supports (background-blend-mode: multiply) {
+    background: url(../../assets/images/day13/shoe-3.png),
+      radial-gradient(#444, #111);
+    background-blend-mode: multiply;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+}
+
+.featured {
+  background-color: #eee;
+  &__item {
+    display: block;
+    position: relative;
+    transform: scale(0.85);
+    transition: transform 250ms ease-in-out;
+    text-decoration: none;
+    color: #333;
+    text-align: center;
+    line-height: 1.2;
+
+    &:hover,
+    &:focus {
+      transform: scale(1);
+      .featured__details {
+        opacity: 1;
+        text-shadow: 0 0 1em rgba(#fff, 1);
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      padding: 75% 75% 0 0;
+      background: #2193b0;
+      top: 10%;
+      left: 10%;
+      border-radius: 50%;
+      z-index: -1;
+    }
+  }
+
+  &__details {
+    opacity: 0;
+    transition: opacity 250ms linear;
+    .price {
+      display: block;
+      font-weight: 700;
+      font-size: 2rem;
+    }
+  }
+}
+
+.product {
+  background: radial-gradient(
+    var(--clr-inner, limegreen),
+    var(--clr-outer, purple)
+  );
+  padding: 3em;
+  border-radius: 3em;
+  margin-bottom: 3em;
+  text-align: center;
+  &__title {
+    font-size: clamp(3rem, calc(5vw + 1rem), 5.5rem);
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 0 0 0.2em rgba(#000, 0.2);
+  }
+
+  &__image {
+    margin: -5em 0 0 0;
+  }
+
+  @media (min-width: 45em) {
+    text-align: left;
+    margin-bottom: 9em;
+    &__title {
+      margin-top: 0 !important;
+    }
+    &__image {
+      float: right;
+      width: 65%;
+      shape-outside: url(../../assets/images/day13/shoe-1.png);
+      shape-margin: 1em;
+      margin: 0 -5em 0 0;
+    }
+    &.shoe-white {
+        .product__image {
+            float: left;
+            shape-outside: url(../../assets/images/day13/shoe-2.png);
+            margin: 0 0 0 -5em;
+        }
+    }
+  }
+}
+
+.hero {
+  --clr-accent: #faa700;
+}
+
+.shoe-red {
+  --clr-inner: #faa700;
+  --clr-outer: #e48d00;
+  --clr-accent: #a1173c;
+}
+
+.shoe-white {
+  --clr-inner: #fce4b3;
+  --clr-outer: #eac886;
+  --clr-accent: #2f4858;
+}
+
+.shoe-blue {
+  --clr-inner: #6dd5ed;
+  --clr-outer: #2193b0;
+  --clr-accent: #008951;
+}

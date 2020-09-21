@@ -10,6 +10,7 @@ import { GridLayoutComponent } from './grid-layout/grid-layout.component';
 import { ImageSpanComponent } from './image-span/image-span.component';
 import { ButtonAccordionComponent } from './button-accordion/button-accordion.component';
 import { SplitScreenComponent } from './split-screen/split-screen.component';
+import { LandingPageV1Component } from './landing-page-v1/landing-page-v1.component';
 
 
 const routes: Routes = [{
@@ -26,7 +27,8 @@ const routes: Routes = [{
 { path: 'day9', component: GridLayoutComponent },
 { path: 'day10', component: ImageSpanComponent },
 { path: 'day11', component: ButtonAccordionComponent },
-{ path: 'day12', component: SplitScreenComponent }];
+{ path: 'day12', component: SplitScreenComponent },
+{ path: 'day13', component: LandingPageV1Component }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

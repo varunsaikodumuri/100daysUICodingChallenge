@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, Renderer2, ViewChild, ElementRef, Input } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild, ElementRef, Input } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({

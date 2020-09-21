@@ -14,6 +14,7 @@ import { GridLayoutComponent } from './grid-layout/grid-layout.component';
 import { ImageSpanComponent } from './image-span/image-span.component';
 import { ButtonAccordionComponent } from './button-accordion/button-accordion.component';
 import { SplitScreenComponent } from './split-screen/split-screen.component';
+import { LandingPageV1Component } from './landing-page-v1/landing-page-v1.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SplitScreenComponent } from './split-screen/split-screen.component';
     GridLayoutComponent,
     ImageSpanComponent,
     ButtonAccordionComponent,
-    SplitScreenComponent
+    SplitScreenComponent,
+    LandingPageV1Component
   ],
   imports: [
     BrowserModule,
