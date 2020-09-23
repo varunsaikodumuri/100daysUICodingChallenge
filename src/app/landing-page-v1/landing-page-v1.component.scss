@@ -8,6 +8,8 @@ img {
   width: 85%;
   margin: 0 auto;
   max-width: 65em; // 65*16 = 1040px
+  --clr-link: #faa700;
+  --clr-bg: rgba(45,45,46, 0.8);
 }
 
 .spacing > * + * {
@@ -45,6 +47,15 @@ img {
   opacity: 0.9;
 }
 
+.btn:focus {
+  outline: 0;
+  box-shadow: 0 0 0 5px var(--clr-bg, #fff), 0 0 0 10px var(--clr-accent, blue);
+}
+
+::-moz-focus-inner {
+  border: 0;
+}
+
 .primary-title {
   font-size: 4rem;
   font-size: clamp(3rem, calc(5vw + 1rem), 4.5rem);
@@ -64,6 +75,35 @@ section {
   padding: 7em 0;
 }
 
+a[data-tool-tip] {
+  color: var(--clr-link);
+  position: relative;
+}
+
+a[data-tool-tip]::after {
+  content: attr(data-tool-tip);
+  display: block;
+  position: absolute;
+  background-color: var(--clr-bg);
+  padding: .5em 3em;
+  color: white;
+  border-radius: 5px;
+  font-size: .75em;
+  left:0;
+  bottom: 0;
+  white-space: nowrap;
+  transform: scale(0);
+  transition: transform 0.2s ease-out, bottom 0.2s ease-out;
+}
+
+a[data-tool-tip]:hover::after {
+  transform: scale(1);
+  bottom: 100%;
+}
+
+.container > .btn:last-child {
+  margin-left: 1em;
+}
 .hero {
   text-align: center;
   padding: 15em 0;
@@ -98,6 +138,9 @@ section {
         opacity: 1;
         text-shadow: 0 0 1em rgba(#fff, 1);
       }
+    }
+    &:focus {
+      outline: none;
     }
 
     &::after {
@@ -169,22 +212,26 @@ section {
 
 .hero {
   --clr-accent: #faa700;
+  --clr-bg: #2d2d2e;
 }
 
 .shoe-red {
   --clr-inner: #faa700;
   --clr-outer: #e48d00;
   --clr-accent: #a1173c;
+  --clr-bg: #e48d00;
 }
 
 .shoe-white {
   --clr-inner: #fce4b3;
   --clr-outer: #eac886;
   --clr-accent: #2f4858;
+  --clr-bg: #eac886;
 }
 
 .shoe-blue {
   --clr-inner: #6dd5ed;
   --clr-outer: #2193b0;
   --clr-accent: #008951;
+  --clr-bg: #2193b0;
 }

@@ -1,11 +1,14 @@
 <div class="image-container">
-  <div class="image-column" *ngFor="let img of imagesList;let i=index">
+  <div class="image-column" *ngFor="let img of imagesList;let i=index" (click)="openImage(img)">
     <img
       class="image"
       src="{{ 'https://picsum.photos/' + img.props[0] + '/' + img.props[1] + '?' + img.id}}"
       alt="Gallery Image"
-      (click)="openImage(img)"
+      
     />
+
+    <h3 class="image__title">Picsum Landscape</h3>
+
   </div>
 </div>
 <ng-container *ngIf="selectedImageName">

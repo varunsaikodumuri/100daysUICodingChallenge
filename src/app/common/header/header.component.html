@@ -1,5 +1,5 @@
 <div class="toolbar" role="banner" *ngIf="showHeader">
-  <div class="side-nav-toggle" (click)="toggleMenu(true)" #toggleButton><i class="fa fa-bars"></i></div>
+  <div class="side-nav-toggle" tabindex="0" (click)="toggleMenu(true)" #toggleButton><i class="fa fa-bars"></i></div>
 
   <div class="side-nav-menu" [class.open]="isMenuOpen">
     <ul class="side-nav-menu-list">
@@ -9,7 +9,7 @@
     </ul>
   </div>
 
-  <a [routerLink]="'/home'">
+  <a [routerLink]="'/home'" tabindex="0">
     <div class="profile-img">
       <img alt="Angular Logo" src="assets/images/app/profile.JPG" />
     </div>
