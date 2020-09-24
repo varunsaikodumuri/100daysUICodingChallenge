@@ -42,19 +42,62 @@
 .side-nav-toggle {
   margin-left: 16px;
   cursor: pointer;
+  z-index: 20;
+  width: 30px;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  .hamburger {
+    display: block;
+    position: relative;
+  }
+
+  .hamburger,.hamburger::before, .hamburger::after {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    transition: transform 250ms ease-in-out;
+  }
+
+  .hamburger::before, .hamburger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+  }
+
+  .hamburger::before {
+    bottom: 6px;
+  }
+
+  .hamburger::after {
+    top: 6px;
+  }
+}
+
+.side-nav-toggle.open {
+  .hamburger {
+    transform: rotate(45deg)
+  }
+  .hamburger::after {
+    transform: rotate(90deg) translate(-6px);
+  }
+  .hamburger::before {
+    opacity: 0;
+  }
 }
 
 .side-nav-menu {
-  display: none;
-  position: fixed;
+  transform: translateX(-100%);
+  position: absolute;
   top: 0;
   left: 0;
   width: 25%;
-  height: calc(100% - 60px);
+  height: 100vh;
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.95);
   padding-top: 60px;
   overflow: auto;
+  transition: transform 200ms linear;
 }
 
 @media only screen and (max-width: 767px) {
@@ -64,7 +107,8 @@
 }
 
 .side-nav-menu.open {
-  display: block;
+  // display: block;
+  transform: translateX(0);
 }
 
 .side-nav-menu-list {

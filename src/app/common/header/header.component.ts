@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
     this.menuList = this.dataService.getNavList()
   }
 
-  toggleMenu(flag) {
-    this.isMenuOpen = flag;
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 }

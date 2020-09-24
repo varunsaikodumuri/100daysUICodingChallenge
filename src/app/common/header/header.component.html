@@ -1,10 +1,18 @@
-<div class="toolbar" role="banner" *ngIf="showHeader">
-  <div class="side-nav-toggle" tabindex="0" (click)="toggleMenu(true)" #toggleButton><i class="fa fa-bars"></i></div>
+<nav class="toolbar" role="banner" *ngIf="showHeader">
+  <div
+    class="side-nav-toggle" [class.open]="isMenuOpen"
+    tabindex="0"
+    (click)="toggleMenu()"
+    #toggleButton
+  >
+    <span class="hamburger"></span> 
+    <!-- Unicode for hamburger: &#9776; -->
+  </div>
 
   <div class="side-nav-menu" [class.open]="isMenuOpen">
     <ul class="side-nav-menu-list">
-      <li class="side-nav-menu-item" *ngFor="let menuItem of menuList;">
-        <a [routerLink]="menuItem.path">{{menuItem.name}}</a>
+      <li class="side-nav-menu-item" *ngFor="let menuItem of menuList">
+        <a [routerLink]="menuItem.path">{{ menuItem.name }}</a>
       </li>
     </ul>
   </div>
@@ -48,4 +56,4 @@
       />
     </svg>
   </a>
-</div>
+</nav>
