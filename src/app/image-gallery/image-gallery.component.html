@@ -1,7 +1,7 @@
 <div class="image-container">
   <div class="image-column" *ngFor="let img of imagesList;let i=index" (click)="openImage(img)">
     <img
-      class="image"
+      class="image" loading="lazy"
       src="{{ 'https://picsum.photos/' + img.props[0] + '/' + img.props[1] + '?' + img.id}}"
       alt="Gallery Image"
       

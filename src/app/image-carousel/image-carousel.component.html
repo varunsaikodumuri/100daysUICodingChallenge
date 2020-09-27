@@ -5,7 +5,7 @@
       *ngFor="let image of carouselImages; let i = index"
       [class.active]="activeImage === i ? true : false"
     >
-      <img class="carousel-img" src="https://picsum.photos/800/300?{{ i }}" />
+      <img class="carousel-img"  loading="lazy" src="https://picsum.photos/800/300?{{ i }}" />
     </div>
   </div>
   <a class="left carousel-control" href="#myCarousel" data-slide="prev">

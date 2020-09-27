@@ -1,0 +1,166 @@
+@mixin triangle($size, $side, $left: 0, $top: 0, $color: red) {
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: $left;
+  top: $top;
+  transform: translate(-50%, -50%);
+  border: $size solid transparent;
+  border-#{$side}-color: $color;
+}
+
+.userinput-container {
+  min-height: calc(100vh - 60px);
+  display: grid;
+  place-items: center;
+
+  .custom-select {
+    position: relative;
+    select {
+      box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+      font-size: 1.5rem;
+      padding: 1rem 4em 1em 1.5rem;
+      background-color: #4d5061;
+      color: white;
+    }
+
+    .custom-arrow {
+      position: absolute;
+      display: block;
+      background: #3b3c47;
+      height: 100%;
+      width: 3rem;
+      top: 0;
+      right: 0;
+      pointer-events: none;
+
+      &::before {
+        content: "";
+        @include triangle(
+          0.65em,
+          bottom,
+          $left: 50%,
+          $top: 35%,
+          $color: rgba(255, 255, 255, 0.5)
+        );
+      }
+      &::after {
+        content: "";
+        @include triangle(
+          0.65em,
+          top,
+          $left: 50%,
+          $top: 65%,
+          $color: rgba(255, 255, 255, 0.5)
+        );
+      }
+    }
+  }
+
+  .custom-text {
+    background-color: white;
+    position: relative;
+    &__label {
+      position: absolute;
+      pointer-events: none;
+      top: -1.2em;
+      left: 0em;
+      font-size: 1rem;
+      opacity: 0.8;
+      transition: top 150ms cubic-bezier(0.18, 0.89, 0.32, 1.15),
+        left 150ms cubic-bezier(0.18, 0.89, 0.32, 1.15),
+        font-size 150ms cubic-bezier(0.18, 0.89, 0.32, 1.15),
+        top 150ms cubic-bezier(0.18, 0.89, 0.32, 1.15);
+    }
+
+    &__input:placeholder-shown + .custom-text__label {
+      top: 0.5em;
+      left: 1em;
+      font-size: 1.5rem;
+      opacity: 0.5;
+    }
+    &__input {
+      display: block;
+      font-size: 1.5rem;
+      padding: 0.5em 1em;
+      box-shadow: 0px 4px 5px -3px rgba(0, 0, 0, 0.35);
+    }
+
+    &:focus-within {
+      .custom-text__label {
+        top: -1.2em;
+        left: 0em;
+        font-size: 1rem;
+        opacity: 0.8;
+      }
+    }
+  }
+
+  .custom-search {
+    background: white;
+    width: 70vw;
+    padding: 3em;
+    box-shadow: 0 0 3em rgba(0, 0, 0, 0.15);
+    position: relative;
+    --size: 60px;
+    .search-bar {
+      border: 2px solid #ee6352;
+      border-radius: 50px;
+      display: flex;
+      height: var(--size);
+      width: var(--size);
+      padding: 3px;
+      position: relative;
+      transition: width 300ms cubic-bezier(0.18, 0.89, 0.32, 1.15);
+      overflow: hidden;
+
+      &__input {
+        flex-grow: 1;
+        padding: 0 2em;
+        background: transparent;
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        line-height: calc(var(--size) - 3px);
+        transition: opacity 150ms ease-in-out;
+        cursor: pointer;
+        &:focus {
+          outline: 0;
+        }
+      }
+
+      &__submit {
+        font-size: 1.5rem;
+        cursor: pointer;
+        background: transparent;
+        border-radius: 50%;
+        width: calc(var(--size) - 10px);
+        height: calc(var(--size) - 10px);
+        margin-left: auto;
+        transition: background 150ms ease-in-out;
+        &:hover,
+        &:focus {
+          outline: 0;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+        }
+      }
+
+      &:focus-within {
+        width: 100%;
+
+        .search-bar__input {
+          opacity: 1;
+          cursor: initial;
+          width: calc(100% - var(--size));
+        }
+
+        .search-bar__submit {
+          background: #ee6352;
+          color: white;
+        }
+      }
+    }
+  }
+}

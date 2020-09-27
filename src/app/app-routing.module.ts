@@ -11,6 +11,7 @@ import { ImageSpanComponent } from './image-span/image-span.component';
 import { ButtonAccordionComponent } from './button-accordion/button-accordion.component';
 import { SplitScreenComponent } from './split-screen/split-screen.component';
 import { LandingPageV1Component } from './landing-page-v1/landing-page-v1.component';
+import { UserInputsComponent } from './user-inputs/user-inputs.component';
 
 
 const routes: Routes = [{
@@ -28,7 +29,8 @@ const routes: Routes = [{
 { path: 'day10', component: ImageSpanComponent },
 { path: 'day11', component: ButtonAccordionComponent },
 { path: 'day12', component: SplitScreenComponent },
-{ path: 'day13', component: LandingPageV1Component }];
+{ path: 'day13', component: LandingPageV1Component },
+{ path: 'day19', component: UserInputsComponent }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

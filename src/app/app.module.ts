@@ -15,6 +15,7 @@ import { ImageSpanComponent } from './image-span/image-span.component';
 import { ButtonAccordionComponent } from './button-accordion/button-accordion.component';
 import { SplitScreenComponent } from './split-screen/split-screen.component';
 import { LandingPageV1Component } from './landing-page-v1/landing-page-v1.component';
+import { UserInputsComponent } from './user-inputs/user-inputs.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { LandingPageV1Component } from './landing-page-v1/landing-page-v1.compon
     ImageSpanComponent,
     ButtonAccordionComponent,
     SplitScreenComponent,
-    LandingPageV1Component
+    LandingPageV1Component,
+    UserInputsComponent
   ],
   imports: [
     BrowserModule,
