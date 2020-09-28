@@ -31,12 +31,47 @@
   margin: 0 16px;
   width: 45px;
   height: 45px;
+  position: relative;
+  transition: transform 100ms ease-in-out;
+}
+
+.profile-img:hover {
+  transform: scale(1.1);
+}
+
+.profile-img::after {
+  --pulse-color: #999;
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
   border-radius: 50%;
-  overflow: hidden;
+}
+
+.profile-img:hover::after {
+  background: var(--pulse-color, #1b218f);
+  z-index: 1;
+  animation: pulse 1250ms infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
 }
 
 .profile-img img {
-  width: 100%;
+  max-width: 100%;
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
 }
 
 .side-nav-toggle {
@@ -52,15 +87,18 @@
     position: relative;
   }
 
-  .hamburger,.hamburger::before, .hamburger::after {
+  .hamburger,
+  .hamburger::before,
+  .hamburger::after {
     width: 30px;
     height: 3px;
     background-color: white;
     transition: transform 250ms ease-in-out;
   }
 
-  .hamburger::before, .hamburger::after {
-    content: '';
+  .hamburger::before,
+  .hamburger::after {
+    content: "";
     position: absolute;
     left: 0;
   }
@@ -76,7 +114,7 @@
 
 .side-nav-toggle.open {
   .hamburger {
-    transform: rotate(45deg)
+    transform: rotate(45deg);
   }
   .hamburger::after {
     transform: rotate(90deg) translate(-6px);
