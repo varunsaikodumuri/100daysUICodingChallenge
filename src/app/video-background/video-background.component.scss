@@ -1,0 +1,21 @@
+.video-container {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  padding: 100px 0;
+  position: relative;
+  min-height: calc(100vh - 60px);
+  overflow: hidden;
+  .video-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+  }
+  h1 {
+    font-size: clamp(2rem, calc(5vw + 1rem), 5rem);
+  }
+}

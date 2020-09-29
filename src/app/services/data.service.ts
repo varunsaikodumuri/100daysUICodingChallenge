@@ -18,7 +18,8 @@ export class DataService {
       { name: 'Day 11 (Social Media Accordion)', path: '/day11', showHeader: true },
       { name: 'Day 12 (Split Screen)', path: '/day12', showHeader: true },
       { name: 'Day 13 (Landing Page v1)', path: '/day13', showHeader: false },
-      { name: 'Day 19 (User Inputs)', path: '/day19', showHeader: true }
+      { name: 'Day 19 (User Inputs)', path: '/day19', showHeader: true },
+      { name: 'Day 21 (Video Background)', path: '/day21', showHeader: true }
     ]
   }
 

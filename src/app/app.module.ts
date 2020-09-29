@@ -16,6 +16,7 @@ import { ButtonAccordionComponent } from './button-accordion/button-accordion.co
 import { SplitScreenComponent } from './split-screen/split-screen.component';
 import { LandingPageV1Component } from './landing-page-v1/landing-page-v1.component';
 import { UserInputsComponent } from './user-inputs/user-inputs.component';
+import { VideoBackgroundComponent } from './video-background/video-background.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { UserInputsComponent } from './user-inputs/user-inputs.component';
     ButtonAccordionComponent,
     SplitScreenComponent,
     LandingPageV1Component,
-    UserInputsComponent
+    UserInputsComponent,
+    VideoBackgroundComponent
   ],
   imports: [
     BrowserModule,
