@@ -1,11 +1,12 @@
 <nav class="toolbar" role="banner" *ngIf="showHeader">
   <div
-    class="side-nav-toggle" [class.open]="isMenuOpen"
+    class="side-nav-toggle"
+    [class.open]="isMenuOpen"
     tabindex="0"
     (click)="toggleMenu()"
     #toggleButton
   >
-    <span class="hamburger"></span> 
+    <span class="hamburger"></span>
     <!-- Unicode for hamburger: &#9776; -->
   </div>
 
@@ -19,7 +20,43 @@
 
   <a [routerLink]="'/home'" tabindex="0">
     <div class="profile-img">
-      <img alt="Angular Logo" src="assets/images/app/profile.JPG" />
+      <!-- 
+          To add srcset for dpr 1/2/3, use srcset values as below:
+            assets/images/app/profile.jpg 1x,
+            assets/images/app/profile-2x.jpg 2x,
+            assets/images/app/profile-3x.jpg 3x 
+      -->
+      <picture>
+        <source
+          media="(max-width: 500px)"
+          srcset="
+            assets/images/app/profile.jpg     50w,
+            assets/images/app/profile-2x.jpg 100w,
+            assets/images/app/profile-3x.jpg 150w
+          "
+        />
+        <source
+          media="(max-width: 1000px)"
+          srcset="
+            assets/images/app/profile.jpg,
+            assets/images/app/profile-2x.jpg 2x,
+            assets/images/app/profile-3x.jpg 3x
+          "
+        />
+        <source
+          srcset="
+            assets/images/app/profile.jpg     50w,
+            assets/images/app/profile-2x.jpg 100w,
+            assets/images/app/profile-3x.jpg 150w
+          "
+        />
+        <img
+          alt="Profile Picture"
+          sizes="(max-width: 500px) 40px,
+        50px"
+          src="assets/images/app/profile.jpg"
+        />
+      </picture>
     </div>
   </a>
   <span>Welcome</span>
