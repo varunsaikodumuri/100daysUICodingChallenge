@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { Route } from '@angular/compiler/src/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { routeAnimations } from './animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [routeAnimations]
 })
 export class AppComponent {
   title = 'UICodingChallenge';
@@ -23,5 +25,9 @@ export class AppComponent {
     })
   }
   changeInRoutes(event) {
+  }
+
+  prepareRoute(o) {
+    return o.isActivated ? o.activatedRoute.url._value[0].path : '';
   }
 }

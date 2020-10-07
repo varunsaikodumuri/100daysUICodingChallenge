@@ -1,4 +1,9 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
 <app-header [showHeader]="showHeader"></app-header>
-<router-outlet (activate)="changeInRoutes($event)"></router-outlet>
+<main [@scaleIn]="prepareRoute(o)">
+  <router-outlet
+    #o="outlet"
+    (activate)="changeInRoutes($event)"
+  ></router-outlet>
+</main>
