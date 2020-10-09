@@ -1,0 +1,87 @@
+<div class="video-player-container">
+  <div class="video-player" #videoPlayerContainer>
+    <video
+      preload="metadata"
+      width="100%"
+      oncontextmenu="return false;"
+      controlslist="nodownload"
+      #videoPlayer
+    >
+      <source
+        src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+        type="video/mp4"
+      />
+    </video>
+
+    <div class="video-controls">
+      <div class="video-status-buttons">
+        <button class="rewind" (click)="rewind()">
+          <i class="fa fa-backward"></i>
+        </button>
+        <button class="play" (click)="playVideo()">
+          <i class="fa fa-play" *ngIf="isPaused()"></i>
+          <i class="fa fa-pause" *ngIf="!isPaused()"></i>
+        </button>
+        <button class="forward" (click)="forward()">
+          <i class="fa fa-forward"></i>
+        </button>
+      </div>
+      <div class="video-footer-controls">
+        <div class="playpause-wrapper">
+          <button class="play" (click)="playVideo()">
+            <i class="fa fa-play" *ngIf="isPaused()"></i>
+            <i class="fa fa-pause" *ngIf="!isPaused()"></i>
+          </button>
+        </div>
+        <div class="volume-wrapper">
+          <button class="volume__button" (click)="toggleMute()">
+            <i class="fa fa-volume-up" *ngIf="!isMuted && volumeValue &#62;&#61; 0.6"></i>
+            <i class="fa fa-volume-down" *ngIf="!isMuted && volumeValue &#60; 0.6"></i>
+            <i class="fa fa-volume-off" *ngIf="isMuted"></i>
+          </button>
+          <div class="volume-range">
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.1"
+              [(ngModel)]="volumeValue"
+              class="slider"
+              id="volumeRange"
+              (change)="volumeChanged()"
+            />
+          </div>
+        </div>
+        <div class="time">
+          {{ getCurrentTime() | getTime }} / {{ getTotalDuration() | getTime }}
+        </div>
+        <div class="flex-stretch"></div>
+        <div
+          class="playback-speed-wrapper"
+          #playbackSpeedControl
+          [class.open]="!hidePlayback"
+        >
+          <button class="playback-speed" (click)="togglePlaybackButton()">
+            <i class="fa fa-cog"></i>
+          </button>
+          <div class="playback-speed__options">
+            <span
+              class="playback-speed__option"
+              *ngFor="let option of playbackOptions"
+              [class.selected]="playbackValue === option.value"
+              data-value="option.value"
+              (click)="selectPlaybackOption(option.value)"
+              >{{ option.label }}</span
+            >
+          </div>
+        </div>
+        <div class="fullscreen-wrapper">
+          <button class="full-screen" (click)="toggleFullScreen()">
+            <i class="fa fa-expand" *ngIf="!isFullScreen"></i
+            ><i class="fa fa-compress" *ngIf="isFullScreen"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

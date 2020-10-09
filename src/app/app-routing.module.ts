@@ -13,6 +13,7 @@ import { SplitScreenComponent } from './split-screen/split-screen.component';
 import { LandingPageV1Component } from './landing-page-v1/landing-page-v1.component';
 import { UserInputsComponent } from './user-inputs/user-inputs.component';
 import { VideoBackgroundComponent } from './video-background/video-background.component';
+import { VideoPlayerComponent } from './video-player/video-player.component';
 
 
 const routes: Routes = [{
@@ -32,7 +33,8 @@ const routes: Routes = [{
 { path: 'day12', component: SplitScreenComponent },
 { path: 'day13', component: LandingPageV1Component },
 { path: 'day19', component: UserInputsComponent },
-{ path: 'day21', component: VideoBackgroundComponent }];
+{ path: 'day21', component: VideoBackgroundComponent },
+{ path: 'day25', component: VideoPlayerComponent }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

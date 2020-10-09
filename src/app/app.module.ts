@@ -18,6 +18,8 @@ import { SplitScreenComponent } from './split-screen/split-screen.component';
 import { LandingPageV1Component } from './landing-page-v1/landing-page-v1.component';
 import { UserInputsComponent } from './user-inputs/user-inputs.component';
 import { VideoBackgroundComponent } from './video-background/video-background.component';
+import { TimeDisplayPipe, VideoPlayerComponent } from './video-player/video-player.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -35,12 +37,15 @@ import { VideoBackgroundComponent } from './video-background/video-background.co
     SplitScreenComponent,
     LandingPageV1Component,
     UserInputsComponent,
-    VideoBackgroundComponent
+    VideoBackgroundComponent,
+    VideoPlayerComponent,
+    TimeDisplayPipe
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
