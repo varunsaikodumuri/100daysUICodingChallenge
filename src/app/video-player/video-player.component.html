@@ -50,6 +50,7 @@
               id="volumeRange"
               (change)="volumeChanged()"
             />
+            <div class="volume-range-after" [style.width.px]="(volumeValue * 50)"></div>
           </div>
         </div>
         <div class="time">
@@ -69,7 +70,7 @@
               class="playback-speed__option"
               *ngFor="let option of playbackOptions"
               [class.selected]="playbackValue === option.value"
-              data-value="option.value"
+              [attr.data-value]="option.value"
               (click)="selectPlaybackOption(option.value)"
               >{{ option.label }}</span
             >
