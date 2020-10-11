@@ -13,33 +13,43 @@
       />
     </video>
 
-    <div class="video-controls">
+    <div class="video-controls" #videoControls (click)="videoControlsClicked($event, videoControls)">
       <div class="video-status-buttons">
-        <button class="rewind" (click)="rewind()">
+        <button class="rewind" tabindex="-1" (click)="rewind()">
           <i class="fa fa-backward"></i>
         </button>
-        <button class="play" (click)="playVideo()">
+        <button class="play" tabindex="-1" (click)="playPauseVideo()">
           <i class="fa fa-play" *ngIf="isPaused()"></i>
           <i class="fa fa-pause" *ngIf="!isPaused()"></i>
         </button>
-        <button class="forward" (click)="forward()">
+        <button class="forward" tabindex="-1" (click)="forward()">
           <i class="fa fa-forward"></i>
         </button>
       </div>
       <div class="video-footer-controls">
         <div class="playpause-wrapper">
-          <button class="play" (click)="playVideo()">
+          <button class="play" tabindex="0" (click)="playPauseVideo()">
             <i class="fa fa-play" *ngIf="isPaused()"></i>
             <i class="fa fa-pause" *ngIf="!isPaused()"></i>
           </button>
         </div>
         <div class="volume-wrapper">
-          <button class="volume__button" (click)="toggleMute()">
-            <i class="fa fa-volume-up" *ngIf="!isMuted && volumeValue &#62;&#61; 0.6"></i>
-            <i class="fa fa-volume-down" *ngIf="!isMuted && volumeValue &#60; 0.6"></i>
+          <button class="volume__button" tabindex="0" (click)="toggleMute()" >
+            <i
+              class="fa fa-volume-up"
+              *ngIf="!isMuted && volumeValue &#62;&#61; 0.6"
+            ></i>
+            <i
+              class="fa fa-volume-down"
+              *ngIf="!isMuted && volumeValue &#60; 0.6"
+            ></i>
             <i class="fa fa-volume-off" *ngIf="isMuted"></i>
           </button>
           <div class="volume-range">
+            <div
+              class="volume-range-fill"
+              [style.width.px]="volumeValue * 50"
+            ></div>
             <input
               type="range"
               min="0"
@@ -47,10 +57,9 @@
               step="0.1"
               [(ngModel)]="volumeValue"
               class="slider"
-              id="volumeRange"
+              id="volumeRange" tabindex="0"
               (change)="volumeChanged()"
             />
-            <div class="volume-range-after" [style.width.px]="(volumeValue * 50)"></div>
           </div>
         </div>
         <div class="time">
@@ -62,7 +71,7 @@
           #playbackSpeedControl
           [class.open]="!hidePlayback"
         >
-          <button class="playback-speed" (click)="togglePlaybackButton()">
+          <button class="playback-speed" tabindex="0" (click)="togglePlaybackButton()">
             <i class="fa fa-cog"></i>
           </button>
           <div class="playback-speed__options">
@@ -71,13 +80,14 @@
               *ngFor="let option of playbackOptions"
               [class.selected]="playbackValue === option.value"
               [attr.data-value]="option.value"
+              tabindex="1"
               (click)="selectPlaybackOption(option.value)"
               >{{ option.label }}</span
             >
           </div>
         </div>
         <div class="fullscreen-wrapper">
-          <button class="full-screen" (click)="toggleFullScreen()">
+          <button class="full-screen" tabindex="0" (click)="toggleFullScreen()">
             <i class="fa fa-expand" *ngIf="!isFullScreen"></i
             ><i class="fa fa-compress" *ngIf="isFullScreen"></i>
           </button>

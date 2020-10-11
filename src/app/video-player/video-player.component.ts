@@ -3,19 +3,20 @@ import { AfterViewInit, Component, ElementRef, HostListener, OnInit, Pipe, PipeT
 @Pipe({ name: 'getTime' })
 export class TimeDisplayPipe implements PipeTransform {
   transform(value: number): string {
-    let ss: string | number = value % 60;
-    let mm: string | number = Math.floor(value / 60) % 60;
-    let hh: string | number = Math.floor(value / 3600);
+    let ss: string | number = value % 60 || 0;
+    let mm: string | number = Math.floor(value / 60) % 60 || 0;
+    let hh: string | number = Math.floor(value / 3600) || 0;
 
     if (ss < 10) {
       ss = '0' + ss;
     }
-    if (mm < 10) {
-      mm = '0' + mm;
-    }
+
     let result = `${mm}:${ss}`;
     if (hh > 0) {
-      result = `${hh}:${result}`
+      if (mm < 10) {
+        mm = '0' + mm;
+      }
+      result = `${hh}:${mm}:${ss}`
     }
     return result;
   }
@@ -47,7 +48,7 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
   }
 
-  playVideo() {
+  playPauseVideo() {
     if (this.isPaused()) {
       this.videoPlayer.nativeElement.play();
     } else {
@@ -61,7 +62,17 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
 
   forward() {
     this.videoPlayer.nativeElement.currentTime += 3;
-    console.log(this.videoPlayer.nativeElement.ontimeupdate);
+  }
+
+  changeVolume(val) {
+    if ((this.volumeValue <= 0.8 && val == 1) || (this.volumeValue >= 0.2 && val == -1))
+      this.volumeValue += val * 0.2;
+    else if (val === 1)
+      this.volumeValue = 1;
+    else if (val === -1)
+      this.volumeValue = 0;
+    this.volumeValue = parseFloat(this.volumeValue.toFixed(1))
+    this.volumeChanged()
   }
 
   isPaused() {
@@ -80,17 +91,14 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
     if (!this.videoPlayer || !this.videoPlayer.nativeElement) {
       return '';
     }
-    const totalSeconds = Math.floor(this.videoPlayer.nativeElement.currentTime);
-    return totalSeconds;
+    return Math.floor(this.videoPlayer.nativeElement.currentTime);
   }
 
   getTotalDuration() {
     if (!this.videoPlayer || !this.videoPlayer.nativeElement) {
       return '';
     }
-
-    const totalSeconds = Math.floor(this.videoPlayer.nativeElement.duration);
-    return totalSeconds;
+    return Math.floor(this.videoPlayer.nativeElement.duration);
   }
 
   toggleFullScreen() {
@@ -112,6 +120,31 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
     }
   }
 
+  @HostListener('document:keyup', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    switch (event.key) {
+      case ' ':
+        setTimeout(() => {
+          if(document.activeElement.getAttribute('tabindex') === null || +document.activeElement.getAttribute('tabindex') < 0) {
+            this.playPauseVideo();
+          }
+          });
+        return;
+      case 'ArrowUp':
+        this.changeVolume(1);
+        return;
+      case 'ArrowDown':
+        this.changeVolume(-1);
+        return;
+      case 'ArrowLeft':
+        this.rewind();
+        return;
+      case 'ArrowRight':
+        this.forward();
+        return;
+    }
+  }
+
   togglePlaybackButton() {
     this.hidePlayback = !this.hidePlayback;
   }
@@ -126,7 +159,8 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
     if ((this.volumeValue === 0 && !this.isMuted) || this.isMuted) {
       this.toggleMute()
     }
-    this.videoPlayer.nativeElement.volume = this.volumeValue;
+    if (this.volumeValue <= 1 && this.volumeValue >= 0)
+      this.videoPlayer.nativeElement.volume = this.volumeValue;
   }
 
   toggleMute() {
@@ -134,4 +168,9 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
     this.videoPlayer.nativeElement.muted = this.isMuted;
   }
 
+  videoControlsClicked(event, videoControls) {
+    if (event.target === videoControls) {
+      this.playPauseVideo();
+    }
+  }
 }

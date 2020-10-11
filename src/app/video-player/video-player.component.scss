@@ -18,7 +18,13 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(0deg, rgba(12,11,36,0.5) 0%, rgba(79,79,79,0) 25%, rgba(79,79,79,0) 75%, rgba(12,11,36,0.5) 100%);;
+  background: linear-gradient(
+    0deg,
+    rgba(12, 11, 36, 0.5) 0%,
+    rgba(79, 79, 79, 0) 25%,
+    rgba(79, 79, 79, 0) 75%,
+    rgba(12, 11, 36, 0.5) 100%
+  );
 
   opacity: 0;
   transition: opacity 200ms ease-in;
@@ -166,6 +172,23 @@ button:focus {
   transition: margin 200ms ease-in, width 200ms ease-in;
 }
 
+.volume-range-fill {
+  background: #305c91;
+  width: attr(data-width);
+  height: 5px;
+  position: absolute;
+  z-index: 5;
+  align-self: center;
+  justify-content: center;
+cursor: pointer;
+  pointer-events: none;
+}
+
+.volume-wrapper:hover .volume-range {
+  width: 50px;
+  margin-right: 3px;
+}
+
 .volume-range input {
   -webkit-appearance: none;
   appearance: none;
@@ -176,23 +199,14 @@ button:focus {
   outline: none;
   align-self: center;
   justify-content: center;
+  cursor: pointer;
   -webkit-transition: 0.2s;
   transition: opacity 0.2s;
 }
 
-.volume-range-after {
-  background: #305c91;
-  width: attr(data-width);
-  height: 5px;
-  position: absolute;
-  z-index: 5;
-  align-self: center;
-  justify-content: center;
-  pointer-events: none;
-}
 
-.volume-range input::-webkit-slider-thumb,
-.volume-range input::-moz-range-thumb {
+
+.volume-range input::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 14px;
@@ -205,7 +219,32 @@ button:focus {
   z-index: 10;
 }
 
-.volume-wrapper:hover .volume-range {
-  width: 50px;
-  margin-right: 3px;
+.volume-range input::-moz-range-thumb {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: #305c91;
+  border: none;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  z-index: 10;
 }
+
+.volume-range input::-ms-thumb {
+  -webkit-appearance: none;
+-moz-appearance: none;
+ appearance: none;
+  width: 14px;
+  height: 14px;
+  background: #305c91;
+  border: none;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+

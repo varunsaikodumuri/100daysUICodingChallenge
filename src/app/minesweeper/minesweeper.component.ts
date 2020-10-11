@@ -116,7 +116,6 @@ export class MinesweeperComponent implements OnInit {
       });
     }
     if (isWin) {
-      console.log('Congrats! You are a winner');
       this.isGameOver = true;
       this.isWinner = true;
     }

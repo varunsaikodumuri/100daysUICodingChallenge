@@ -13,13 +13,13 @@
   <div class="side-nav-menu" [class.open]="isMenuOpen">
     <ul class="side-nav-menu-list">
       <li class="side-nav-menu-item" *ngFor="let menuItem of menuList">
-        <a [routerLink]="menuItem.path">{{ menuItem.name }}</a>
+        <a [routerLink]="menuItem.path" [attr.tabindex]="isMenuOpen? 0 : -1">{{ menuItem.name }}</a>
       </li>
     </ul>
   </div>
 
-  <a [routerLink]="'/home'" tabindex="0">
-    <div class="profile-img">
+  <a [routerLink]="'/home'" tabindex="-1" class="profile-img-nav">
+    <div class="profile-img" tabindex="0">
       <!-- 
           To add srcset for dpr 1/2/3, use srcset values as below:
             assets/images/app/profile.jpg 1x,

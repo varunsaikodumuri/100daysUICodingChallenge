@@ -13,6 +13,7 @@
       [routerLink]="navElement.path"
       [state]="{ showHeader: navElement.showHeader }"
       *ngFor="let navElement of navList"
+      tabindex="0"
     >
       <span>{{ navElement.name }}</span>
 
