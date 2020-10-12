@@ -13,7 +13,7 @@
       />
     </video>
 
-    <div class="video-controls" #videoControls (click)="videoControlsClicked($event, videoControls)">
+    <div class="video-controls" [class.show]="isPaused() || !isIdle()" #videoControls (click)="videoControlsClicked($event, videoControls)">
       <div class="video-status-buttons">
         <button class="rewind" tabindex="-1" (click)="rewind()">
           <i class="fa fa-backward"></i>

@@ -39,13 +39,28 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
   volumeValue = 1;
   isMuted = false;
   hidePlayback = true;
+  idleObj = { idleStatus: false, idleTime: 0 };
   constructor() { }
 
 
   ngOnInit() {
   }
 
-  ngAfterViewInit(): void {
+  ngAfterViewInit() {
+    setInterval(() => {
+      this.idleObj.idleStatus = true;
+      this.idleObj.idleTime += 1;
+
+      if (this.isFullScreen && this.isIdle()) {
+        document.body.style.cursor = 'none';
+      } else {
+        document.body.style.cursor = 'inherit';
+      }
+    }, 1000)
+  }
+
+  isIdle() {
+    return this.idleObj.idleStatus && this.idleObj.idleTime >= 3;
   }
 
   playPauseVideo() {
@@ -102,6 +117,7 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
   }
 
   toggleFullScreen() {
+    this.isFullScreen = !this.isFullScreen;
     if (document.fullscreenEnabled) {
       if (!document.fullscreenElement) {
         this.videoPlayerContainer.nativeElement.requestFullscreen().catch(err => {
@@ -125,10 +141,10 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
     switch (event.key) {
       case ' ':
         setTimeout(() => {
-          if(document.activeElement.getAttribute('tabindex') === null || +document.activeElement.getAttribute('tabindex') < 0) {
+          if (document.activeElement.getAttribute('tabindex') === null || +document.activeElement.getAttribute('tabindex') < 0) {
             this.playPauseVideo();
           }
-          });
+        });
         return;
       case 'ArrowUp':
         this.changeVolume(1);
@@ -143,6 +159,12 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
         this.forward();
         return;
     }
+  }
+
+  @HostListener('document:mousemove', ['$event'])
+  onMouseMove(e) {
+    this.idleObj.idleStatus = false;
+    this.idleObj.idleTime = 0;
   }
 
   togglePlaybackButton() {

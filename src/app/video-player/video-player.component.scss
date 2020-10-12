@@ -30,7 +30,7 @@
   transition: opacity 200ms ease-in;
 }
 
-.video-player:hover .video-controls {
+.video-controls.show {
   opacity: 1;
 }
 
