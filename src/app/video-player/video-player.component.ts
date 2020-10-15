@@ -3,6 +3,7 @@ import { AfterViewInit, Component, ElementRef, HostListener, OnInit, Pipe, PipeT
 @Pipe({ name: 'getTime' })
 export class TimeDisplayPipe implements PipeTransform {
   transform(value: number): string {
+    value = Math.floor(value);
     let ss: string | number = value % 60 || 0;
     let mm: string | number = Math.floor(value / 60) % 60 || 0;
     let hh: string | number = Math.floor(value / 3600) || 0;
@@ -106,14 +107,14 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
     if (!this.videoPlayer || !this.videoPlayer.nativeElement) {
       return '';
     }
-    return Math.floor(this.videoPlayer.nativeElement.currentTime);
+    return this.videoPlayer.nativeElement.currentTime;
   }
 
   getTotalDuration() {
     if (!this.videoPlayer || !this.videoPlayer.nativeElement) {
       return '';
     }
-    return Math.floor(this.videoPlayer.nativeElement.duration);
+    return this.videoPlayer.nativeElement.duration;
   }
 
   toggleFullScreen() {
@@ -194,5 +195,9 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
     if (event.target === videoControls) {
       this.playPauseVideo();
     }
+  }
+
+  progressChanged(event) {
+    this.videoPlayer.nativeElement.currentTime = event.target.value * this.videoPlayer.nativeElement.duration;
   }
 }

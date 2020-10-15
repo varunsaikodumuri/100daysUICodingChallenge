@@ -26,6 +26,24 @@
           <i class="fa fa-forward"></i>
         </button>
       </div>
+      <div class="video-progress-bar-container">
+        <div class="video-progress-bar">
+          <div class="load-progress"  [style.width.%]="(getCurrentTime()/getTotalDuration() * 100) + 5"></div>
+          <div class="play-progress" [style.width.%]="getCurrentTime()/getTotalDuration() * 100"></div>
+          <div class="video-progress-slider">
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.001"
+              [value]="getCurrentTime()/getTotalDuration()"
+              class="progress-bar"
+              id="volumeRange" tabindex="0"
+              (change)="progressChanged($event)"
+            />
+          </div>
+        </div>
+      </div>
       <div class="video-footer-controls">
         <div class="playpause-wrapper">
           <button class="play" tabindex="0" (click)="playPauseVideo()">
